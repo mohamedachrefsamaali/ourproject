@@ -1,37 +1,26 @@
 #ifndef ELECTION_H_INCLUDED
 #define ELECTION_H_INCLUDED
 #include <stdio.h>
+#include <gtk/gtk.h>
 typedef struct
 {
-int jour;
-int mois;
-int annee;
+char jour[20];
+char mois[20];
+char annee[20];
 }date;
 typedef struct
 {
 char id[20];
 char nombres_habitants[20];
-int municipalite;
-char NC [20];
+char municipalite[20];
+char NC[20];
 date d;
 }Election;
-typedef struct infoelecteur{
-char CIN[8];
-char motdepasse[10];
-char Ntelephone[8];
-char nom[30];
-char prenom[30];
-date d;
-int municipalite;
-int role;
-int genre;
-int vote;
-int num_bv;
-}electeur;
-
-int ajouter(char *filename , Election E );
-int modifier(char id[], char *filename, Election nouv);
-int supprimer(char * filename, char id[]);
+int test_id(char id[]);
+void afficher_Election(GtkWidget *liste);
+void ajouter_Election(Election E );
+int modifier(char id[],Election nouv);
+int supprimer_elec(char id[]);
 Election chercher(char * filename, char id[]);
 float TPE(char *filname);
 void TPHF(char *filename,float *femme,float *homme);
